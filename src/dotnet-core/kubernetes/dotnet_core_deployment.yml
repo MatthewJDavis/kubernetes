@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-core-deployment
+  labels:
+    app: hello-dotnet-core-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-dotnet-core-app
+  template:
+    metadata:
+      labels:
+        app: hello-dotnet-core-app
+    spec:
+      containers:
+        - name: hello-dotnet-core-app
+          image: matthewdavis111/hello-dotnet-core-app
+          ports:
+            - containerPort: 80

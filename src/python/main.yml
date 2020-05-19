@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    base_image: python:latest
+    image_name: 'matthewdavis111/hello-flask-app'
+
+  pre_tasks:
+    - name: Pull latest python3 container image
+      docker_image:
+        name: "{{ base_image }}"
+        source: pull
+        force_source: true
+
+    - name: Build Docker image from Dockerfile
+      docker_image:
+        name: "{{ image_name }}"
+        source: build
+        build:
+          path: hello_flask_app
+        state: present
