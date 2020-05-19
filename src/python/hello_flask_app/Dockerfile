@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD [ "python", "./helo_flask_app.py" ]
+CMD [ "python", "./hello_flask_app.py" ]
