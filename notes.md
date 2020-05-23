@@ -11,7 +11,7 @@ One or more nodes
 
 Masters
  API Server
- etcd - k8s keyvalue store (db for config
+ etcd - k8s key value store (db for config
  scheduler - picks nodes to run work on
  cloud controller manager - integrates with cloud services
  kube controller manager
@@ -26,8 +26,21 @@ Cloud providers
 Fully managed K8s, creates the masters and nodes for you, deals with the CA side, networking, availability. Auto upgrades, self repair, no maintenance - high availability. Resource control and cluster scaling.
 Don't touch the master control plane.
 
-kubectl - command line interface for managining the lifecycle of k8s objects. Interacts with the API server
 
+Replica Sets
+Ensure that the specified number of pods are running across the node(s) at any given time.
+
+kubectl - command line interface for managing the lifecycle of k8s objects. Interacts with the API server
+
+Stateful apps
+
+- Can be deployed with persistent storage
+- Can not be scaled - the persistent volume can only be mounted in one pod at a time.
+- Can not use rolling updates. strategy type is recreate, the pod is stopped a new pod is started and can then attach to the persistent storage.
+
+Create a persistent volume
+Create a claim for the volume
+Create a pod that uses the claim to the volume.
 
 Process
 
@@ -44,5 +57,5 @@ Process for helm
 Install helm tool
 Enable helm on cluster
 Install helm chart
+
  - templated manifests are then applied to the cluster
- 
