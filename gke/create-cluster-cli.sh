@@ -21,3 +21,8 @@ kubectl rollout history deployment.v1.apps/dotnet-core-deployment --revision=4
 # cheaper
 gcloud container clusters create cheaper-cluster --num-nodes=2 --machine-type=e2-medium
 gcloud container clusters get-credentials cheaper-cluster --zone northamerica-northeast1-a --project $projid
+
+# tidy up
+gcloud container clusters list
+gcloud container clusters delete cheaper-cluster
+gcloud container clusters delete matt-cluster
