@@ -15,6 +15,8 @@ kubectl apply -f service.yml
 # update deployment then roll back
 kubectl apply -f deployment.yml
 kubectl rollout undo deployment.v1.apps/dotnet-core-deployment
+kubectl rollout history deployment.v1.apps/dotnet-core-deployment
+kubectl rollout history deployment.v1.apps/dotnet-core-deployment --revision=4
 
 # cheaper
 gcloud container clusters create cheaper-cluster --num-nodes=2 --machine-type=e2-medium
