@@ -46,4 +46,4 @@ msbuild.wrn
 # Java
 
 target/
-src/java
+src/java/.*
