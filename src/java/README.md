@@ -18,3 +18,14 @@ java -jar target/gs-spring-boot-docker-0.1.0.jar
 
 Will be now serving on localhost:8080.
 
+## Building the container
+
+```bash
+docker build -t matthewdavis111/hello-java-spring .
+```
+
+### Running the container
+
+```docker
+docker run -it --rm --name java-spring -p 8080:8080 matthewdavis111/hello-java-spring
+```
