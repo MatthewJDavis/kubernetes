@@ -1,13 +1,14 @@
 # go to console and gke to enable the api
 gcloud compute zones list
-gcloud config set compute/zone northamerica-northeast1-a
+zone=northamerica-northeast1-b
+gcloud config set compute/zone $zone
 gcloud container clusters create matt-cluster
 
 # get creds for the cluster
 gcloud projects list
-projid=playground-s-11-6ccaf0
+projid=playground-s-11-5c576e
 
-gcloud container clusters get-credentials matt-cluster --zone northamerica-northeast1-a --project $projid
+gcloud container clusters get-credentials matt-cluster --zone $zone --project $projid
 
 kubectl apply -f deployment.yml
 kubectl apply -f service.yml
