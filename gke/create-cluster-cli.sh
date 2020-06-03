@@ -13,6 +13,10 @@ gcloud container clusters get-credentials matt-cluster --zone $zone --project $p
 kubectl apply -f deployment.yml
 kubectl apply -f service.yml
 
+app=hello-go
+#view logs for app per node
+for pod in $(kubectl get po -l app=$app -oname); do echo $pod; kubectl logs $pod; done;
+
 # update deployment then roll back
 kubectl apply -f deployment.yml
 kubectl rollout undo deployment.v1.apps/dotnet-core-deployment
